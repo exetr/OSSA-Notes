@@ -6,16 +6,16 @@ _Information listed here may not accurately reflect content that is involved in 
 
 ## Table of Contents
 
-1. [Introduction](Introduction)
-2. [Course Content](Course-Content)
-    - [What Is Information Security](What-Is-Information-Security)
-        - [Origins of Cyberattacks](Origins-of-Cyberattacks)
-        - [Basic Security Concepts](Basic-Security_Concepts)
-        - [8-Step Security Gameplan](8-Step-Security-Gameplan)
-    - [Defending Your Turf & Security Policy Formulation](Defending-Your-Turf-&-Security-Policy-Formulation)
-        - [4Ps of Defence](4Ps-of-Defence)
-        - [4 Steps of Defending Networks & Systems](4-Steps-of-Defending-Networks-&-Systems)
-    - [Network 101](Network-101)
+1. [Introduction](#Introduction)
+2. [Course Content](#Course-Content)
+    - [What Is Information Security](#What-Is-Information-Security)
+        - [Origins of Cyberattacks](#Origins-of-Cyberattacks)
+        - [Basic Security Concepts](#Basic-Security_Concepts)
+        - [8-Step Security Gameplan](#8-Step-Security-Gameplan)
+    - [Defending Your Turf & Security Policy Formulation](#Defending-Your-Turf-&-Security-Policy-Formulation)
+        - [4Ps of Defence](#4Ps-of-Defence)
+        - [4 Steps of Defending Networks & Systems](#4-Steps-of-Defending-Networks-&-Systems)
+    - [Network 101](#Network-101)
 
 ## Introduction
 
@@ -141,19 +141,150 @@ The Security Gameplan is a summary framework which shows the general execution o
 
 #### Sniffing
 
-#### OSI Model 
+THe identification of network traffic, to give a better idea of the true nature of traffic whtin yout network.
+
+The sniffer of choice for most IT security practitioners is Wireshark. **For the purpose of this certification, it is important for you to be proficiet at the usage of Wireshark as a significant portion of the examination will involve analysis of network traffic**
+
+#### OSI Model
+
+|Layer 7|Application|
+|Layer 6|Presentation|
+|Layer 5|Sessions|
+|Layer 4|Transport|
+|Layer 3|Network|
+|Layer 2|Data Link|
+|Layer 1|Physical|
 
 #### Layer 2 Frames
 
+A frame is like an envelope containing a letter, it has an address directed towards a recipient and some content inside.
 
-### 4. Defensive Tools & Lockdown
+##### Components of a frame
 
-### 5. The 5E Attacker Methodlogy
+- Frame headers and trailers perform synchronization
+- Header of a frame contains MAC address of origin and destination network adapter, in the format of xx:xx:xx:yy:yy:yy (6 bytes)
+- MAC address allows identification for type of device
 
-### 6. Wireless Insecurity
+##### Attacking Switches
 
-### 7. Incident Response & Computer Forensics
+Attackers can target the Content Addressable Memory (CAM) table with bogus entries, with tools such as Macof, to take up CAM table space. Legitimate entries are crowded out, causing the switch to be unable to determine legitimately connected clients, causing it to forward all frames out of every port in attmept to get frame to its destination address, enabling attackers to sniff traffic within the network.
 
-### 8. The Impact of Law
+#### Layer 3 IP
 
-## Useful Commands
+Internet Protocol is used to deliver packets from source to destination. Similarly, the source and destination headers are stored in headers.
+
+IP is connectionless, meaning there is no pre-established connection bewtwen sender and recipient, instead relying on upper layer protocols to ensure delivery and to re-assemble the IP packets in the right order at the destination.
+
+Addressing is in the format of aa.bb.xx.yy (32-bit) for IPv4. The last block of IPv4 addressing having been distributed in 2011, IPv6 was developed to deal with the address shortage, utilising 128-bit hexadecimal addressing.
+
+Routers are used to route packets. They receive packets from one interface and forwards it to another interface. No known routes will result in dropped packets.
+
+##### Time To Live (TTL) Values
+
+TTL values can be used to determine the operating system of a host as they are usually consistent across many different machine running the same operating system.
+
+|OS|TTL|
+|--|---|
+|Windows 95|32|
+|Linux|64|
+|Windows XP/Vista/7/Server|128|
+
+*Note that due to hops over a network, the TTL value of a system may differ from the values stated above, generally, the closest estimate will be sufficient enough to determine the operating system*
+
+##### Private IP Ranges
+
+Due to the lack of IPv4 addresses, certain ranges of IP addresses were reserved for use on private networks. They include:
+
+- Class A: 10.0.0.0 through 10.255.255.255
+- Class B: 172.0.0.0 through 172.31.255.255.255
+- Class C: 192.168.0.0 through 192.168.255.255
+
+These addresses can be used anywhere so long as Network Address Translation (NAT) is performed as they are non-routable over the internet. As a result, they are based on destination, as the source can be spoofed by attackers within private ranges in Distributed Denial of Service Attacks (DDoS)
+
+##### Amplification Attacks Through IP Broadcast
+
+Each network contains broadcast address which relays all packets sent to the broadcast address to be forwarded to all hosts within the network.
+
+Attackers can spoof source IP address to reflect attack back on a third party.
+
+Smurf Attacks
+
+1. Attacker sends 23KB ICMP echo request with destination address of 3.3.3.255 to network 3.3.3.0/24 with source address as 2.2.2.2
+2. Gateway router at 3.3.3.0/24 receives echo requests and detects the destiantion address is a broadcast address, forwarding the echo request to all hosts within the 3.3.3.0/24 network
+3. All live hosts receive echo request and responds with ICMP echo reply, flooding host at 2.2.2.2 with responses, possibly overwhelming it
+
+#### Address Resoution Protocol (ARP)
+
+ARP is employed by a host when it wants to find out the IPv4 address held by a network adapter address (MAC address). This system can result in some problems:
+
+- ARP has no way of telling whether information contained in ARP reply is legitimate
+- Attacker can send unsolicited ARP replies to hosts informing them that the IP address for a particular host is held by the attacker's MAC address
+- Host accepts this ARP reply, poisoning its cache
+- Any packets sent to IP address will instead be redirected to the attacker
+- Attacker can "insert" himself between poisoned hosts, called a Man-In-The-Middle attack
+
+##### Routing
+
+Routing is the process of getting a packet from source host A to destination host B.
+
+To send a packet to the internet, the gateway first has to be determined, which involves ARP requests to determine the MAC address of the gateway. Data is thus sent from host-to-host, host-to-router, router-to-router
+
+#### Layer 4 TCP & UDP
+
+##### Transmission Control Protocol (TCP)
+
+TCP provides reliable, ordered and error-checked delivery of a stream of data between applications running on hosts communicating over an IP network.
+
+##### Three-way Handshake
+
+Three way handshakes are required to be established between two hosts before data can be transferred between two hosts over TCP.
+
+Establishing connection between Host A and Host B:
+
+|Packet|Type|Direction|
+|Packet 1|SYN|Host A --> Host B|
+|Packet 2|SYN/ACK|Host A <-- Host B|
+|Packet 3|ACK|Host A --> Host B|
+
+Attackers can exploit this by never sending ACK packets to complete the handshake and sending more SYN packets, resulting in the target assigning more memory to hold incomplete handshakes.
+
+##### Four-way Termination
+
+Four way terminations are used to indicate that two hosts want to stop communications
+
+Establishing termination between Host A and Host B:
+
+|Packet|Type|Direction|
+|Packet 1|FIN/ACK|Host A --> Host B|
+|Packet 2|ACK|Host A <-- Host B|
+|Packet 3|FIN/ACK|Host A <-- Host B|
+|Packet 4|ACK|Host A --> Host B|
+
+Attackers can use FIN flagged packets to conduct reconnaissance if a firewall is stopping SYN flagged packets from going through. The default reaction to receiving a FIN packet is to terminate an existing connection using a 4-way termination. However, if there is no existing connection prior to the FIN packet, the host may send a RST packet in response. The receipt of an RST flagged packet shows that there is a host behind the firewall.
+
+##### User Datagram Protocol (UDP)
+
+UDP is a protocol used to transfer packets between hosts in a connectionless method, based on best-effort delivery of packets. It is used for applications such as SNMP or DNS where speed is of priority.
+
+UDP poses challenges to identifying services as a response can only be obtained under the following conditions:
+
+- Target with open service residing behind UDP port receives UDP packet with matching payload protocol (eg: DNS query payload for DNS service behind UDP port 53 will receive a DNS response)
+- Target with no service residing behind UDP port receiving UDP packet will return ICMP unreachable packet
+- All other scenarios will result in no replies from the host
+
+#### Domain Name System (DNS)
+
+DNS ties IP addresses to canonical names which usually include memorable phrases, allowing users to be able to access service easily.
+
+DNS Query:
+
+- DNS query sent (who is example.com)
+- Server checks cache for DNS record, if absent, forwards to .com root server, the authoritative name server for secure**.com**
+- Receives reply from authoritative name server (example.com is 8.8.8.8)
+- Sends response to requester (example.com is at 8.8.8.8)
+
+##### DNS Poisoning
+
+A classic case of DNS poisoning starts with an attacker sending an email to their target with a link to a domain controlled by the attacker. The client will try to query the ISP DNS server for the attacker's DNS server. Once verified, the client will now receive DNS responses from the attacker's DNS. Attacker can provide illegitimate responses to the client's queries and can redirect them to malicious websites.
+
+DNS poisoning can occur when an attacker pre-locates himself along the path of transmission of a DNS response from the ISP DNS server to the client making the request. He can then rewrite the contents of the response from the DNS server to the client with an arbitrary value.
