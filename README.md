@@ -610,9 +610,33 @@ The procedure usually is to:
 
 #### Exploitation
 
+Once a target has been enumerated, the attacker moves on to attempt to gain control over the target via any weaknesses found during enumeration
+
+##### Spoofing & Man-in-the-Middle Attacks
+
+##### Denial of Service
+
+##### Exploit Fundementals
+
+##### Web Applications
+
+##### Password Cracking
+
 #### Embedding
 
+1. Backdoors
+2. Trojans
+3. Rootkits
+
+##### Defence Against Embedding Tools
+
 #### Egress
+
+Egress is defined as the act of an attacker removing evidence that may indicate his or her actions.
+
+1. File Hiding
+2. Log Modification/Removal
+3. Executable Removal
 
 ### 6. Wireless Insecurity
 
