@@ -1,8 +1,8 @@
 # OSSA Notes
 
-Notes for ThinkSECURE's Organisational Systems Security Analyst (OSSA) Certification. Information here was sourced from both study guides provided by ThinkSECURE and personal anecdotes from the March 2018 run of the certification examination.
+Notes for the ThinkSECURE Organizational Systems Security Analyst (OSSA) Certification. Information here was sourced from both study guides provided by ThinkSECURE and personal anecdotes from the March 2018 run of the certification examination.
 
-_Information listed here may not accurately reflect content that is involved in any particular future runs of the examination_
+NOTE: *Information listed here may not accurately reflect content that is involved in any particular future runs of the examination*
 
 ## Table of Contents
 
@@ -23,13 +23,13 @@ The examination duration is 4 hours long and includes 45 multiple choice questio
 
 Since this examination involves negative marking, I highly suggest that you do not answer questions that you are completely uncertain of as trying to guess answers to questions brings a higher chance of getting the answers wrong and hence getting more marks deducted.
 
-The bulk of the examination focuses on two topics: analysing network traffic and network scanning. Hence, I would suggest placing more focus on getting comfortable with using wireshark and nmap. Additionally, I would also advice that you read up on concepts that are related to these two tools. Some of the aforementioned concepts may include but are not limited to:
+The bulk of the examination focuses on two topics: analyzing network traffic and network scanning. Hence, I would suggest placing more focus on getting comfortable with using WireShark and nmap. Additionally, I would also advice that you read up on concepts that are related to these two tools. Some of the aforementioned concepts may include but are not limited to:
 
 - TCP three way handshakes
 - TCP flags
 - TCP protocols
 
-During the examination, I highly suggest that you begin off by performing nmap scans of all the hosts involved and specified in the question paper and record down all the information you can retrieve. During this time, focus on answering questions from other sections and topics during this time. This is because in a class of 20 students, the limited bandwidth will result in very long scan times so having to repeat the nmap scans multiple times over to get infomation you have missed out on will be a huge waste of time.
+During the examination, I highly suggest that you begin off by performing nmap scans of all the hosts involved and specified in the question paper and record down all the information you can retrieve. During this time, focus on answering questions from other sections and topics during this time. This is because in a class of 20 students, the limited bandwidth will result in very long scan times so having to repeat the nmap scans multiple times over to get information you have missed out on will be a huge waste of time.
 
 ## Course Content
 
@@ -40,7 +40,7 @@ This section contains the information included in the training programme for the
 #### Origins of Cyberattacks
 
 - The Curious: people who found tools on the internet and randomly picks IP addresses to test on
-- The Malicious: dislike of other persons or organisations
+- The Malicious: dislike of other persons or organizations
 - The Criminal: attacks with intent to commit crime
 - The Competitor: attacks against competing businesses in the same industry
 - The Natural: natural causes such as disasters resulting in denial of service
@@ -52,7 +52,7 @@ This section contains the information included in the training programme for the
 
 - Confidentiality: preventing others from finding out about things (encryption)
 - Integrity: how to keep data and platform in a state of "wholeness" (hash)
-- Availability: notion of maintianing on-demand accessibility (redundancy)
+- Availability: notion of maintaining on-demand accessibility (redundancy)
 
 ##### SOB Troika
 
@@ -64,7 +64,7 @@ The CIA triad answers many concerns to IT security, however in a real world pers
 
 ##### Trust & Verify
 
-The concept of not taking anything at face value is important in IT security. For instance if a vendor says their product can perform the job, you have to test the vendo's assertion and find out yourself.
+The concept of not taking anything at face value is important in IT security. For instance if a vendor says their product can perform the job, you have to test the vendor's assertion and find out yourself.
 
 ##### Ask The Oracle
 
@@ -74,7 +74,7 @@ If your choice of tool are search engines such as Google, it is also good to dev
 
 #### 8-Step Security Gameplan
 
-The Security Gameplan is a summary framework which shows the general execution of a security implementation. This is because security impleentations are not full-featured products that can be bought form vendors, but must be approacehd in a holistic perspective that takes accouunt policies, people and other non-technical factors
+The Security Gameplan is a summary framework which shows the general execution of a security implementation. This is because security implementations are not full-featured products that can be bought form vendors, but must be approached in a holistic perspective that takes account policies, people and other non-technical factors
 
 1. Identify Centers of Gravity
     - What are considered important assets
@@ -90,22 +90,22 @@ The Security Gameplan is a summary framework which shows the general execution o
 3. Gather Information from Stakeholders
     - Get roles of stakeholders in assets to be protected
     - Get feedback from parties involved in changes to reduce resistance
-    - Maintian dialogure with concerned parties to refine plan
+    - Maintain dialogue with concerned parties to refine plan
 4. Develop Baselines
     - Take stock of equipment, configurations, applications
-    - Set in place policies, procedures and platforms to idenfity deviations to baselines
+    - Set in place policies, procedures and platforms to identify deviations to baselines
     - Develop baselines based on normal operating periods
 5. User and Corporate Education
     - People are weakest link, as technical defences can be circumvented through human exploitation
     - Explain rationale for proposals and convince management by equating security benefit to bottom-line results
-    - Emphasise impact on bottom line
+    - Emphasize impact on bottom line
 6. Establish Platform Defense
     - Setup defensive procedures & emplace defensive platforms
     - Conduct research into applicable defensive mechanisms and optimum employment
     - Understand how attackers may try to circumvent the defensive mechanisms
 7. Establish Business Continuity & Disaster Recovery
     - Conduct regular drills
-8. Maintian Balance
+8. Maintain Balance
     - Ensure initiatives are followed up on
     - Continue to highlight evolving challenges and threats
     - Undertake applicability reviews
@@ -117,8 +117,8 @@ The Security Gameplan is a summary framework which shows the general execution o
 #### 4Ps of Defence
 
 - Policies: direction a company is going to take in order to achieve whatever goals it states in the policy
-- Procedures: detailed seteps, standards and workflow necessary to achieve the milestones needed to ensure policy is complied with
-- Platforms: deployed to support the delivery and fufiment of the procedures
+- Procedures: detailed steps, standards and workflow necessary to achieve the milestones needed to ensure policy is complied with
+- Platforms: deployed to support the delivery and fulfillment of the procedures
 - People: operates the platforms in the manner dictated by procedures in order to attain and be compliant to the policies
 
 #### 4 Steps of Defending Networks & Systems
@@ -135,18 +135,20 @@ The Security Gameplan is a summary framework which shows the general execution o
 4. Damage Control
     - If breach is detected, implement containment procedures
     - Conduct triage to limit fallout and contain damage
-    - Involve forensis team to assess impact
+    - Involve forensics team to assess impact
 
 ### 3. Network 101
 
 #### Sniffing
 
-THe identification of network traffic, to give a better idea of the true nature of traffic whtin yout network.
+THe identification of network traffic, to give a better idea of the true nature of traffic within your network.
 
-The sniffer of choice for most IT security practitioners is Wireshark. **For the purpose of this certification, it is important for you to be proficiet at the usage of Wireshark as a significant portion of the examination will involve analysis of network traffic**
+The sniffer of choice for most IT security practitioners is Wireshark. **For the purpose of this certification, it is important for you to be proficient at the usage of Wireshark as a significant portion of the examination will involve analysis of network traffic**
 
 #### OSI Model
 
+|Number|Name|
+|---|---|
 |Layer 7|Application|
 |Layer 6|Presentation|
 |Layer 5|Sessions|
@@ -167,15 +169,15 @@ A frame is like an envelope containing a letter, it has an address directed towa
 
 ##### Attacking Switches
 
-Attackers can target the Content Addressable Memory (CAM) table with bogus entries, with tools such as Macof, to take up CAM table space. Legitimate entries are crowded out, causing the switch to be unable to determine legitimately connected clients, causing it to forward all frames out of every port in attmept to get frame to its destination address, enabling attackers to sniff traffic within the network.
+Attackers can target the Content Addressable Memory (CAM) table with bogus entries, with tools such as Macof, to take up CAM table space. Legitimate entries are crowded out, causing the switch to be unable to determine legitimately connected clients, causing it to forward all frames out of every port in attempt to get frame to its destination address, enabling attackers to sniff traffic within the network.
 
 #### Layer 3 IP
 
 Internet Protocol is used to deliver packets from source to destination. Similarly, the source and destination headers are stored in headers.
 
-IP is connectionless, meaning there is no pre-established connection bewtwen sender and recipient, instead relying on upper layer protocols to ensure delivery and to re-assemble the IP packets in the right order at the destination.
+IP is connectionless, meaning there is no pre-established connection between sender and recipient, instead relying on upper layer protocols to ensure delivery and to re-assemble the IP packets in the right order at the destination.
 
-Addressing is in the format of aa.bb.xx.yy (32-bit) for IPv4. The last block of IPv4 addressing having been distributed in 2011, IPv6 was developed to deal with the address shortage, utilising 128-bit hexadecimal addressing.
+Addressing is in the format of aa.bb.xx.yy (32-bit) for IPv4. The last block of IPv4 addressing having been distributed in 2011, IPv6 was developed to deal with the address shortage, utilizing 128-bit hexadecimal addressing.
 
 Routers are used to route packets. They receive packets from one interface and forwards it to another interface. No known routes will result in dropped packets.
 
@@ -189,7 +191,7 @@ TTL values can be used to determine the operating system of a host as they are u
 |Linux|64|
 |Windows XP/Vista/7/Server|128|
 
-*Note that due to hops over a network, the TTL value of a system may differ from the values stated above, generally, the closest estimate will be sufficient enough to determine the operating system*
+NOTE: *Due to hops over a network, the TTL value of a system may differ from the values stated above, generally, the closest estimate will be sufficient enough to determine the operating system*
 
 ##### Private IP Ranges
 
@@ -210,10 +212,10 @@ Attackers can spoof source IP address to reflect attack back on a third party.
 Smurf Attacks
 
 1. Attacker sends 23KB ICMP echo request with destination address of 3.3.3.255 to network 3.3.3.0/24 with source address as 2.2.2.2
-2. Gateway router at 3.3.3.0/24 receives echo requests and detects the destiantion address is a broadcast address, forwarding the echo request to all hosts within the 3.3.3.0/24 network
+2. Gateway router at 3.3.3.0/24 receives echo requests and detects the destination address is a broadcast address, forwarding the echo request to all hosts within the 3.3.3.0/24 network
 3. All live hosts receive echo request and responds with ICMP echo reply, flooding host at 2.2.2.2 with responses, possibly overwhelming it
 
-#### Address Resoution Protocol (ARP)
+#### Address Resolution Protocol (ARP)
 
 ARP is employed by a host when it wants to find out the IPv4 address held by a network adapter address (MAC address). This system can result in some problems:
 
@@ -242,6 +244,7 @@ Three way handshakes are required to be established between two hosts before dat
 Establishing connection between Host A and Host B:
 
 |Packet|Type|Direction|
+|---|---|---|
 |Packet 1|SYN|Host A --> Host B|
 |Packet 2|SYN/ACK|Host A <-- Host B|
 |Packet 3|ACK|Host A --> Host B|
@@ -255,6 +258,7 @@ Four way terminations are used to indicate that two hosts want to stop communica
 Establishing termination between Host A and Host B:
 
 |Packet|Type|Direction|
+|---|---|---|
 |Packet 1|FIN/ACK|Host A --> Host B|
 |Packet 2|ACK|Host A <-- Host B|
 |Packet 3|FIN/ACK|Host A <-- Host B|
@@ -288,3 +292,322 @@ DNS Query:
 A classic case of DNS poisoning starts with an attacker sending an email to their target with a link to a domain controlled by the attacker. The client will try to query the ISP DNS server for the attacker's DNS server. Once verified, the client will now receive DNS responses from the attacker's DNS. Attacker can provide illegitimate responses to the client's queries and can redirect them to malicious websites.
 
 DNS poisoning can occur when an attacker pre-locates himself along the path of transmission of a DNS response from the ISP DNS server to the client making the request. He can then rewrite the contents of the response from the DNS server to the client with an arbitrary value.
+
+### 4. Defensive Tools & Lockdown
+
+#### Firewall
+
+Firewalls act as barriers between computers in an network.
+
+Firewalls can come in multiple forms, which include and are not limited to:
+
+- Appliance - Firmware code residing on dedicated hardware platform
+- Software - Installed on server as point defence
+- Personal - For workstations and individuals
+
+There are also different types of firewalls:
+
+- Packet Filter
+
+Sits between internal network nd rest of the world, allowing packets to pass through it when travelling to and fro the internal network and the internet. The packet filter will compare packets to a set of rules which decides whether the packet should be forwarded onto the next hop or discarded.
+
+Certain firewalls will send a notice when a packet has been dropped, it is discouraged to have such setup, instead the firewall should silently drop packets which do not match rules.
+
+Packet filters compare packets to rules usually based on factors such as source addresses and ports, destination addresses and ports.
+
+As a result, packet filters are normally fast as they do not perform data checking, easy to setup, wide compatibility with applications. Additionally, Network Address Translations and Network Address Port Translation also adds to the security of packet filters.
+
+- Stateful Packet Inspection (SPI)
+
+SPIs are similar to packet filters, but maintain state about each connection passing through them. It has built in knowledge about TCP/IP rules for data flow between two hosts and can detect incorrectly sequenced packets and inconsistent IP protocol options as a result.
+
+Attackers cannot send packets that appear to be part of an existing connection (packets sent to port 80 without initiating a connection will be rejected).
+
+SPIs can help to mitigate DoS attacks (SYN floods), track established connections and allow inbound packets based on state and is relatively fast
+
+- Application Proxy
+
+Proxies break up connection between server and client, acting as a middleman handling connection between each other. It masks the IP stack and characteristics of server it is protecting, resulting in any fingerprinting attempt against the network stack hitting the proxy first and not the server. Additionally, if an attacker tries to make use of fragmented packets of fields in IP packet, the internal server will never receive the packet.
+
+Certain proxies have knowledge of application-specific data and cen therefore check the legality of traffic between the server and client. (Web application proxy can check the legality of a HTTP GET request before forwarding it to the web server)
+
+One major disadvantage is that it since it is application specific, it has to be written to handle specific application protocols. A web application proxy may not be able to understand traffic meant for a FTP server.
+
+- Proxy Firewall
+
+Adding on to application proxies, it is able to perform payload-level inspection. It combines stateful packet inspection, proxy technologies and application-protocol awareness.
+
+Proxy firewalls still act like proxies, it acts as a middleman and receives packets between clients and servers and examines the packets between the 2 connections. It interrogates the behavior and logic of what is being requested and returned, protecting against application-specific attacks. (eg: A web-app firewall protects against attacks such as SQL injection and XSS, parameter or URL tampering and buffer overflows by analysing the contents of each incoming and outgoing attack)
+
+##### Firewall Rules of Thumb
+
+- Block inbound packets (ingress)
+- Block outbound packets (egress)
+- Implicit deny-all
+
+##### Firewall Deployment
+
+- Internet -> External DMZ -> External FW -> Internal DMZ -> Internal FW -> Network (expensive to purchase equipment for)
+- Internet -> FW -> DMZ / Network (risk of rule confusion due to multiple interfaces)
+
+#### Network Intrusion Detection System (NIDS)
+
+A NIDS monitors traffic on its network segment as a data source, accomplished by placing the network interface card in promiscuous mode to capture all network traffic that crosses it. Network based identification involves looking at packets and are considered to be of interest if it matches a signature.
+
+There are three primary types of signatures:
+
+- String Signatures: Looks for text strings that indicate a possible attack, can be refined to reduce number of false positives by using compound string signatures
+- Port Signatures: Watches for connection attempts to well-known ports, if directed to unused ports, it is an indication of suspicious activity
+- Header Condition Signatures: Watches for dangerous or illogical combinations in packet headers
+
+NIDS requires a connection to a network segment to monitor, which can include hubs, switch-port monitoring or active taps
+
+An example of a NIDS is [Snort](http://www.snort.org)
+
+#### Host-based Intrusion Detection System (HIDS)
+
+HIDS focus on monitoring and analyzing the internals of a system rather than its external interfaces. It usually uses a database of system objects it should monitor and can also be made to check that appropriate regions of memory have not been modified.
+
+Some problems with HIDS include:
+
+- Many HIDS can only monitor certain types of systems
+- HIDS do not have access to core communication functionality of system, incapable of fending off attacks against protocol stack
+- Cannot inform before something happens
+- Expensive
+
+An example of a HIDS software is [Tripwire](http://sorceforge.net/projects/tripwire)
+
+#### Honeypots
+
+A honeypot is a trap set to detect, deflect or to counteract attempts at unauthorized use of information systems. It generally consists of a computer system, data or a network that appears to be part of a network but is actually isolated and protected. It also seems to contain information or resources that would be of value to attackers.
+
+##### Low-Interaction Honeypots
+
+Low-interaction honeypots have allow attackers limited abilities, they normally work by emulating services and operating systems.
+
+Advantages:
+
+- Easy to deploy and maintain with minimal risk
+- Requires only installation of software, OS and services to be emulated and monitored.
+- Emulated services mitigate risk by containing attacker's activity, attacker never has access to OS
+
+Disadvantages:
+
+- Logs only limited information and are designed to capture known activity
+- Easy for attacker to detect low-interaction honeypot
+
+##### High-Interaction Honeypots
+
+High-interaction honeypots are more complex solutions which involve real operating systems and applications. Nothing is simulated, allow attackers to access real services.
+
+Advantages:
+
+- Can capture extensive amounts of information. Allowing attackers full and real extent of systems to interact with, their full behavior can be learnt
+- Provides an open environment that captures all activity, allowing high-interaction solutions to learn unexpected behavior
+
+Disadvantages:
+
+- Risk is increased as attackers can use real OS to attack non-honeypot systems
+- More complex to deploy and maintain
+
+##### Common Errors In Deploying Honeypots
+
+- Creating contiguous range of fake hosts with have exactly the same characteristics
+- Attacker would only have to scan entire target range to identify hosts which appear to have same configuration
+- In normal enterprise environments, real servers are deployed on business requirements and are rarely exactly identical
+- Try to make each honeypot host as unique as possible and spread across IP subnet
+
+An example of a honeypot is [Honeyd](http://honeyd.org)
+
+#### Cryptography
+
+Cryptography is the field of mathematics and computer science concerned with encryption and authentication.
+
+##### Transposition Cipher
+
+A transposition cipher changes the position of one character from the plaintext to another in the cipher text. An example of a transposition cipher is the Railfence Cipher.
+
+``` raw
+WE ARE DISCOVERED FLEE AT ONCE
+
+W R I O R F E O E
+E E S V E L A N R
+A D C E D E T C X
+```
+
+##### Substitution Cipher
+
+A substitution cipher is a method of encryption by which units of plaintext are substituted with cipher text according to a regular system.
+
+``` raw
+Plaintext alphabet:  abcdefghijklmnopqestuvwxyz
+Ciphertext alphabet: ZEBRASCDFGHIJKLMNOPQTUVWXY
+
+Message: Flee at once, we are discovered
+Cipher:  SIAA ZA LKBA, VA ZOA RFPBLUAOAR
+```
+
+##### Block Cipher
+
+Block ciphers are a symmetric key cipher which operates on fixed-length groups of bits as plaintext and ciphertext. Examples include Data Encryption Standard (DES), Triple DES (3DES) and Advanced Encryption Standard (AES).
+
+##### Stream Cipher
+
+Stream ciphers are a symmetric cipher where plaintext digits are encrypted one at a time and in which the transformation of successive digits varies during encryption. Examples include Rivest Cipher 4 (RC4), HC-256 and CryptMT.
+
+Stream ciphers are preferred over block ciphers where lower latency encrypted communications is desired. For example, RC4 is used as a cipher for WEP and WPA encryption under the 802.11 wireless networking implementation.
+
+##### Uses of Cryptography
+
+1. Proving Integrity by Hashing
+
+   A hash function is a function which examines the input data and produces an output of a fixed length, called a hash value. Even if two values differ by a bit, the output will have significant differences. If two hashes of the same function are different, the inputs are definitely different. Examples of hash algorithms include Message Digest 5 (MD5) and Secure Hashing Algorithm (SHA).
+
+2. Sending Data Using Symmetric Key Encryption
+
+   Symmetric-key algorithms are a class of algorithms for cryptography that use the same key for encryption and decryption. In practice, it means that it represents a shared secret between two or more parties that can be used to maintian a private information link. It is not feasable for cases involving large numbers of people, as the comprimise of one key requires changing keys for all parties involved, having different keys for everyone means maintining a whole array of keys per person.
+
+3. Remote Networking Using Virtual Private Networking
+
+   VPNs use symmetric key encryption to encrypt communications between two end points.
+
+   a. Transport Mode with Authentication Header (AH):
+
+    ```raw
+    <-----Original IP Packet----->
+    --------------------------------------------------------
+    | Data | TCP/UDP | IP Header | AH | Original IP Header |
+    --------------------------------------------------------
+    <---------------------Signed by AH--------------------->
+    ```
+
+    AH used in transport mode will create a checksum of the original IP packet and store the hash within the AH. The IP header is added to the new header of the packet. At the destination, the hash of the payload is calculated again and checked against the AH to ensure that it has not been modified. AHs in transport mode help to ensure integrity of the packet.
+
+   b. Transport Mode with Encapsulating Security Payload (ESP):
+
+    ```raw
+                                    <-----Original IP Packet----->
+    ------------------------------------------------------------------------------------------------
+    |ESP Auth Trailer | ESP Trailer | Data | TCP/UDP | IP Header | ESP Header | Original IP Header |
+    ------------------------------------------------------------------------------------------------
+                      <---------Encrypted with ESP Header-------->
+                      <---------------Signed by ESP Auth Trailer-------------->
+    ```
+
+   ESP used in transport mode will encrypt the original IP packet with the ESP header. The data within this portion of the packet is now unreadable to people without the decryption key. The ESP Auth header is then used to create a checksum of the now encrypted packet. The original IP header is then inserted at the head of the packet. At the destination, a hash of the encrypted portion of the packet is generated and compared to the ESP Auth Trailer to ensure it has not been modified and is then decrypted using the ESP header. AH in transport mode ensures that the confidentiality and integrity of the packet.
+
+   c. Tunnel Mode with AH
+
+   ```raw
+    <-----Original IP Packet----->
+    ---------------------------------------------------
+    | Data | TCP/UDP | IP Header | AH | New IP Header |
+    ---------------------------------------------------
+    <---------------------Signed by AH---------------->
+    ```
+    AH in tunnel mode works the same way as AH in transport mode, with the exception that a new IP header is added to the head of the packet instead of re-using the original IP header.
+
+   d. Tunnel Mode with ESP
+
+    ```raw
+                                    <-----Original IP Packet----->
+    -------------------------------------------------------------------------------------------
+    |ESP Auth Trailer | ESP Trailer | Data | TCP/UDP | IP Header | ESP Header | New IP Header |
+    -------------------------------------------------------------------------------------------
+                      <---------Encrypted with ESP Header-------->
+                      <---------------Signed by ESP Auth Trailer-------------->
+    ```
+
+    ESP in tunnel mode works the same way as ESP in transport mode, with the exception that a new IP header is added to the head of the packet instead of re-using the original IP header.
+
+   In transport mode, the original IP headers remain unmodified while only the payload is authenticated and/or encrypted. Transport mode is incompatible in networks with communications required to be made over NAT.
+
+   In tunnel mode, the entire IP packet is authenticated and/or authenticated. A new IP header is added to the packet. It is generally used for end-to-end communications (gateway-to-gateway).
+
+4. Sending Data Using Public-Key Cryptography
+
+   Public key crpytography is a form of cryptography which allows users to communicate without having prior access to a shared key. This is done by using keypairs, designated public and private keys. It should not be possible to deduce the private key given a public key. Public-key crryptography can be used to perform encryption (keeping a message secret to anyone who does not possess a specific private key) as digital signatures (allow anyone to verify a message has been created using a specific private key)
+
+   receipient's public key + plaintext = ciphertext
+   ciphertext + receipient's private key = plaintext
+
+5. Proving Identity Using Digital Signatures
+
+   Digital signatures are encryption schemes for authenticating digital information.
+
+6. Ransomware
+
+   Ransomware are malicious software which uses asymmetric encryption to encrypt files in order to extort money from victims in exchange for the private key to decrypt their files.
+
+##### Trust Standards: Public Key Cryptography (PKI)
+
+PKI is an arrangement which provides for third-party vetting of and vouching for user identities. Public keys are typically contained in certificates. PKI arrangements enable users to be authenticated to each other, and to use information in identity certificates to encrypt and decrypt messages travelling to and fro. PKIs usually consist of client software, server software and hardware and operational procedures. A user may digitally sign messages using his private key and another user can check the signature using the public key contained in that user's digital certificate. An example of such software is [GNUPrivacyGuard (GPG)](http://www.gnupg.org)
+
+### 5. The 5E Attacker Methodology
+
+#### Preparation
+
+- Sandboxing
+
+
+- Tool Repositories
+
+- Checking Tool Authenticity
+
+#### Exploration
+
+#### Enumeration
+
+#### Exploitation
+
+#### Embedding
+
+#### Egress
+
+### 6. Wireless Insecurity
+
+#### 802.11 Basics
+
+Security/encryption implementations for WLAN include:
+
+1. Open
+    Anyone can connect, typically used in hotspots, can be used as jump-off points for attacks
+
+2. Wired Equivalent Privacy (WEP)
+    Characteristics: Uses 40/64 or 104/128 bit keys as standard, was part of 802.11i standard
+
+    WEP revolves around a stream cipher, the RC4 encryption algorithm, data is encrypted as it is fed into the cipher to produce stream of cipher text via XOR operation based on a random initialization vector and a pre-shared key. WEP also uses a CRC algorithm to test the integrity of a transmitted packet. A weakness of this implementation is the possibility of IV collisions.
+
+3. WiFi Protected Access - Pre-Shared Key (WPA-PSK)/WPA2-PSK
+    Characteristics: Uses TKIP in place of WEP, uses an ASCII passphrase up to 64 characters long to derive key hierarchy used by TKIP, aka Simple Secure Network (SSN) for WPA-PSK and Robust Secure Network (RSN) for WPA2-PSK
+
+    Problems: Can be broken, in under 5 minutes at 150mbps with steady flow of traffic if ARP-replay injected is used, also breakable if passphrase is dictionary-guessable or if first two frames of 4-way handshake are captured, problems demonstrate need for more robust forms of 802.11 frame encryption
+
+4. WPA/WPA2
+    Characteristics: Similar to WPA/WPA2-PSK but uses 802.1x together with authentication server to generate key hierarchy in place of pre-shared key element, master key is now considered truely random, not known to be crackable using current generation of WPA-crackingtools.
+
+5. VPNoL
+    Characteristics: Uses VPN architecture riding at layer 3 over WLAN, independent of frame layer payload encryption, effective even it 802.11 level security is breached by current or future attacks.
+
+#### Attacks
+
+- Warchalking: Tool to search for free 802.11 services in the area
+- Wardriving: Active search for free WLAN access, considered a crime in many countries.
+
+#### Typical WLAN Deficiencies
+
+- Not enabling frame level encryption (WPA/WPA2)
+- Using dictionary based WPA-PSK passphrases
+- Not turning off SSID broadcasts in beacon frames
+- Not using MAC or IP address filtering
+- Not segmenting the WLAN as a DMZ
+- Not turning off unneeded AP services (telnet, SNMP)
+- Leaving AP settings defaulted (logins, passwords)
+- SSID defaulted/revealing
+- Not minimizing RF emanations
+
+### 7. Incident Response & Computer Forensics
+
+### 8. The Impact of Law
+
+## Useful Commands
