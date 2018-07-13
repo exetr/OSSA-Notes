@@ -528,8 +528,10 @@ Stream ciphers are preferred over block ciphers where lower latency encrypted co
 
    Public key crpytography is a form of cryptography which allows users to communicate without having prior access to a shared key. This is done by using keypairs, designated public and private keys. It should not be possible to deduce the private key given a public key. Public-key crryptography can be used to perform encryption (keeping a message secret to anyone who does not possess a specific private key) as digital signatures (allow anyone to verify a message has been created using a specific private key)
 
+   ```raw
    receipient's public key + plaintext = ciphertext
    ciphertext + receipient's private key = plaintext
+   ```
 
 5. Proving Identity Using Digital Signatures
 
@@ -548,7 +550,6 @@ PKI is an arrangement which provides for third-party vetting of and vouching for
 #### Preparation
 
 - Sandboxing
-
 
 - Tool Repositories
 
@@ -571,22 +572,27 @@ PKI is an arrangement which provides for third-party vetting of and vouching for
 Security/encryption implementations for WLAN include:
 
 1. Open
+
     Anyone can connect, typically used in hotspots, can be used as jump-off points for attacks
 
 2. Wired Equivalent Privacy (WEP)
+
     Characteristics: Uses 40/64 or 104/128 bit keys as standard, was part of 802.11i standard
 
     WEP revolves around a stream cipher, the RC4 encryption algorithm, data is encrypted as it is fed into the cipher to produce stream of cipher text via XOR operation based on a random initialization vector and a pre-shared key. WEP also uses a CRC algorithm to test the integrity of a transmitted packet. A weakness of this implementation is the possibility of IV collisions.
 
 3. WiFi Protected Access - Pre-Shared Key (WPA-PSK)/WPA2-PSK
+
     Characteristics: Uses TKIP in place of WEP, uses an ASCII passphrase up to 64 characters long to derive key hierarchy used by TKIP, aka Simple Secure Network (SSN) for WPA-PSK and Robust Secure Network (RSN) for WPA2-PSK
 
     Problems: Can be broken, in under 5 minutes at 150mbps with steady flow of traffic if ARP-replay injected is used, also breakable if passphrase is dictionary-guessable or if first two frames of 4-way handshake are captured, problems demonstrate need for more robust forms of 802.11 frame encryption
 
 4. WPA/WPA2
+
     Characteristics: Similar to WPA/WPA2-PSK but uses 802.1x together with authentication server to generate key hierarchy in place of pre-shared key element, master key is now considered truely random, not known to be crackable using current generation of WPA-crackingtools.
 
 5. VPNoL
+
     Characteristics: Uses VPN architecture riding at layer 3 over WLAN, independent of frame layer payload encryption, effective even it 802.11 level security is breached by current or future attacks.
 
 #### Attacks
