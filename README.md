@@ -309,35 +309,35 @@ There are also different types of firewalls:
 
 - Packet Filter
 
-Sits between internal network nd rest of the world, allowing packets to pass through it when travelling to and fro the internal network and the internet. The packet filter will compare packets to a set of rules which decides whether the packet should be forwarded onto the next hop or discarded.
+    Sits between internal network nd rest of the world, allowing packets to pass through it when travelling to and fro the internal network and the internet. The packet filter will compare packets to a set of rules which decides whether the packet should be forwarded onto the next hop or discarded.
 
-Certain firewalls will send a notice when a packet has been dropped, it is discouraged to have such setup, instead the firewall should silently drop packets which do not match rules.
+    Certain firewalls will send a notice when a packet has been dropped, it is discouraged to have such setup, instead the firewall should silently drop packets which do not match rules.
 
-Packet filters compare packets to rules usually based on factors such as source addresses and ports, destination addresses and ports.
+    Packet filters compare packets to rules usually based on factors such as source addresses and ports, destination addresses and ports.
 
-As a result, packet filters are normally fast as they do not perform data checking, easy to setup, wide compatibility with applications. Additionally, Network Address Translations and Network Address Port Translation also adds to the security of packet filters.
+    As a result, packet filters are normally fast as they do not perform data checking, easy to setup, wide compatibility with applications. Additionally, Network Address Translations and Network Address Port Translation also adds to the security of packet filters.
 
 - Stateful Packet Inspection (SPI)
 
-SPIs are similar to packet filters, but maintain state about each connection passing through them. It has built in knowledge about TCP/IP rules for data flow between two hosts and can detect incorrectly sequenced packets and inconsistent IP protocol options as a result.
+    SPIs are similar to packet filters, but maintain state about each connection passing through them. It has built in knowledge about TCP/IP rules for data flow between two hosts and can detect incorrectly sequenced packets and inconsistent IP protocol options as a result.
 
-Attackers cannot send packets that appear to be part of an existing connection (packets sent to port 80 without initiating a connection will be rejected).
+    Attackers cannot send packets that appear to be part of an existing connection (packets sent to port 80 without initiating a connection will be rejected).
 
-SPIs can help to mitigate DoS attacks (SYN floods), track established connections and allow inbound packets based on state and is relatively fast
+    SPIs can help to mitigate DoS attacks (SYN floods), track established connections and allow inbound packets based on state and is relatively fast
 
 - Application Proxy
 
-Proxies break up connection between server and client, acting as a middleman handling connection between each other. It masks the IP stack and characteristics of server it is protecting, resulting in any fingerprinting attempt against the network stack hitting the proxy first and not the server. Additionally, if an attacker tries to make use of fragmented packets of fields in IP packet, the internal server will never receive the packet.
+    Proxies break up connection between server and client, acting as a middleman handling connection between each other. It masks the IP stack and characteristics of server it is protecting, resulting in any fingerprinting attempt against the network stack hitting the proxy first and not the server. Additionally, if an attacker tries to make use of fragmented packets of fields in IP packet, the internal server will never receive the packet.
 
-Certain proxies have knowledge of application-specific data and cen therefore check the legality of traffic between the server and client. (Web application proxy can check the legality of a HTTP GET request before forwarding it to the web server)
+    Certain proxies have knowledge of application-specific data and cen therefore check the legality of traffic between the server and client. (Web application proxy can check the legality of a HTTP GET request before forwarding it to the web server)
 
-One major disadvantage is that it since it is application specific, it has to be written to handle specific application protocols. A web application proxy may not be able to understand traffic meant for a FTP server.
+    One major disadvantage is that it since it is application specific, it has to be written to handle specific application protocols. A web application proxy may not be able to understand traffic meant for a FTP server.
 
 - Proxy Firewall
 
-Adding on to application proxies, it is able to perform payload-level inspection. It combines stateful packet inspection, proxy technologies and application-protocol awareness.
+    Adding on to application proxies, it is able to perform payload-level inspection. It combines stateful packet inspection, proxy technologies and application-protocol awareness.
 
-Proxy firewalls still act like proxies, it acts as a middleman and receives packets between clients and servers and examines the packets between the 2 connections. It interrogates the behavior and logic of what is being requested and returned, protecting against application-specific attacks. (eg: A web-app firewall protects against attacks such as SQL injection and XSS, parameter or URL tampering and buffer overflows by analysing the contents of each incoming and outgoing attack)
+    Proxy firewalls still act like proxies, it acts as a middleman and receives packets between clients and servers and examines the packets between the 2 connections. It interrogates the behavior and logic of what is being requested and returned, protecting against application-specific attacks. (eg: A web-app firewall protects against attacks such as SQL injection and XSS, parameter or URL tampering and buffer overflows by analysing the contents of each incoming and outgoing attack)
 
 ##### Firewall Rules of Thumb
 
@@ -528,7 +528,7 @@ Stream ciphers are preferred over block ciphers where lower latency encrypted co
 
    Public key crpytography is a form of cryptography which allows users to communicate without having prior access to a shared key. This is done by using keypairs, designated public and private keys. It should not be possible to deduce the private key given a public key. Public-key crryptography can be used to perform encryption (keeping a message secret to anyone who does not possess a specific private key) as digital signatures (allow anyone to verify a message has been created using a specific private key)
 
-   ```raw
+    ```raw
    receipient's public key + plaintext = ciphertext
    ciphertext + receipient's private key = plaintext
    ```
@@ -551,13 +551,62 @@ PKI is an arrangement which provides for third-party vetting of and vouching for
 
 - Sandboxing
 
+    Consider tools as untested and suspicious until proven otherwise, do not test production or live systems with unproven tools, instead, use sandboxing - a controlled environment where tools can be tested without fear of impact on production networks. Some tools that can be used include VMWare and Virtualbox.
+
+    Characterstics:
+
+    - Must not be connected to production systems or netwoks
+    - Must not be used for production purposes
+    - Must be tightly controlled for effects or changes done to system and/or network.
+    - Preferably something which does not save the state of machine or allows snapshot so that it can be rolled back to a known untainted state.
+
 - Tool Repositories
+
+    Examples of resources which house zero-day vulnerabilities include [Full Disclosure Mailing List](http://nmap.org/mailman/listinfo/fulldisclosure), [Exploit-DB](http://exploit-db.com), [Packet Storm](http://packetstormsecurity.com)
 
 - Checking Tool Authenticity
 
 #### Exploration
 
+Exploration is usually the first phrase in an attacker's attempt to understand more about the target. It is usually the longest as even though it is simple in concept and execution, it must be repeated multiple times for multiple leads.
+
+##### Human-Driven Approach
+
+This approach utilises physical human effort and geographic placement in initiating the hunt and recovery for information.
+
+- Human Engineering: Process of exploiting the weaknesses in human beings and plays on the natural tendency to trust
+- Dumpster Diving: Refers to the collection of trash in the hope of getting information as many people tend to throw away valuable information
+- Physical Intimidation: Intrusion, impersonation
+
+##### Computer Aided Approach
+
+This approach uses the internet and public techincal resources to obtain the desired information.
+
+- Scoping Out Forums: Typically, people who ask questions when trying to solve a problem, often leave tell-tale cules to who they work for and what platforms they use
+- Domain Registrars & WHOIS: ICANN requires domain registrants enter in valid contact information, administrative and technical contacts are prime candidates for information harvesting
+- DNS Servers: Zone transfers, reverse lookups and other queries can be run against nameservers for a given domain, resulting in vital clues into setup of a target's internal network
+
 #### Enumeration
+
+Armed with information gathered under exploration, this is the next step in an attacker's attempt to determine as many weaknesses as possible resident in the target which can include but are not limited to: wardriving, wardialing, port scanning, OS discover, tracerouting, vulnerability assessment, web-based vulnerabilities.
+
+The procedure usually is to:
+
+1. Port scan target for list of open/closed or filtered ports
+2. Attempt to identify type of service behind each open port via default content, error displays or fonts
+3. Attempt to determine whether application is vulnerable
+4. Identify OS via TTL and services
+5. Try to identify teh routes into and out of a network and its topology
+
+##### Enumeration Tools
+
+- NMAP: Classic port scanning tool with ping sweeping, port scanning, OS discovery
+- Unicornscan: Scans for UDP ports much faster than NMAP
+- Nessus: Classic vulnerability assessment tool, recommended to check for application vulnerabilities on [CVEDetails](http://cvedetails.com) / [National Vulnerability Database](http://web.nvd.nist.gov/view/vuln/search) / [Common Vulnerabilities & Exposure](https://cve.mitre.org/cve/cve.html)
+- HTTPrint: tool used to determine a web application's type and version
+- AMAP: Port scanning tool for applications
+- Online Services
+- Brain, Logic & Common Sense
 
 #### Exploitation
 
