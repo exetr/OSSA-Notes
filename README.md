@@ -6,16 +6,52 @@ NOTE: *Information listed here may not accurately reflect content that is involv
 
 ## Table of Contents
 
-1. [Introduction](#Introduction)
-2. [Course Content](#Course-Content)
-    - [What Is Information Security](#What-Is-Information-Security)
-        - [Origins of Cyberattacks](#Origins-of-Cyberattacks)
-        - [Basic Security Concepts](#Basic-Security_Concepts)
-        - [8-Step Security Gameplan](#8-Step-Security-Gameplan)
-    - [Defending Your Turf & Security Policy Formulation](#Defending-Your-Turf-&-Security-Policy-Formulation)
-        - [4Ps of Defence](#4Ps-of-Defence)
-        - [4 Steps of Defending Networks & Systems](#4-Steps-of-Defending-Networks-&-Systems)
-    - [Network 101](#Network-101)
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+- [Course Content](#course-content)
+    - [1. What Is Information Security](#1-what-is-information-security)
+        - [Origins of Cyberattacks](#origins-of-cyberattacks)
+        - [Basic Security Concepts](#basic-security-concepts)
+        - [8-Step Security Gameplan](#8-step-security-gameplan)
+    - [2. Defending Your Turf & Security Policy Formulation](#2-defending-your-turf--security-policy-formulation)
+        - [4Ps of Defence](#4ps-of-defence)
+        - [4 Steps of Defending Networks & Systems](#4-steps-of-defending-networks--systems)
+    - [3. Network 101](#3-network-101)
+        - [Sniffing](#sniffing)
+        - [OSI Model](#osi-model)
+        - [Layer 2 Frames](#layer-2-frames)
+        - [Layer 3 IP](#layer-3-ip)
+        - [Address Resolution Protocol (ARP)](#address-resolution-protocol-arp)
+        - [Layer 4 TCP & UDP](#layer-4-tcp--udp)
+        - [Domain Name System (DNS)](#domain-name-system-dns)
+    - [4. Defensive Tools & Lockdown](#4-defensive-tools--lockdown)
+        - [Firewall](#firewall)
+        - [Network Intrusion Detection System (NIDS)](#network-intrusion-detection-system-nids)
+        - [Host-based Intrusion Detection System (HIDS)](#host-based-intrusion-detection-system-hids)
+        - [Honeypots](#honeypots)
+        - [Cryptography](#cryptography)
+    - [5. The 5E Attacker Methodology](#5-the-5e-attacker-methodology)
+        - [Preparation](#preparation)
+        - [Exploration](#exploration)
+        - [Enumeration](#enumeration)
+        - [Exploitation](#exploitation)
+        - [Embedding](#embedding)
+        - [Egress](#egress)
+        - [Reporting](#reporting)
+    - [6. Wireless Insecurity](#6-wireless-insecurity)
+        - [802.11 Basics](#80211-basics)
+        - [Attacks](#attacks)
+        - [Typical WLAN Deficiencies](#typical-wlan-deficiencies)
+    - [7. Incident Response & Computer Forensics](#7-incident-response--computer-forensics)
+        - [Incident Response Framework](#incident-response-framework)
+        - [Computer Forensics](#computer-forensics)
+        - [Information Gathering](#information-gathering)
+    - [8. The Impact of Law](#8-the-impact-of-law)
+        - [The Need To Know](#the-need-to-know)
+        - [State of Cybercrime Law](#state-of-cybercrime-law)
+        - [Issues With Enforcement](#issues-with-enforcement)
+        - [When to Enforce](#when-to-enforce)
+- [Useful Commands](#useful-commands)
 
 ## Introduction
 
@@ -112,6 +148,8 @@ The Security Gameplan is a summary framework which shows the general execution o
     - Patching
     - Check for compliance with law
 
+---
+
 ### 2. Defending Your Turf & Security Policy Formulation
 
 #### 4Ps of Defence
@@ -136,6 +174,8 @@ The Security Gameplan is a summary framework which shows the general execution o
     - If breach is detected, implement containment procedures
     - Conduct triage to limit fallout and contain damage
     - Involve forensics team to assess impact
+
+---
 
 ### 3. Network 101
 
@@ -292,6 +332,8 @@ DNS Query:
 A classic case of DNS poisoning starts with an attacker sending an email to their target with a link to a domain controlled by the attacker. The client will try to query the ISP DNS server for the attacker's DNS server. Once verified, the client will now receive DNS responses from the attacker's DNS. Attacker can provide illegitimate responses to the client's queries and can redirect them to malicious websites.
 
 DNS poisoning can occur when an attacker pre-locates himself along the path of transmission of a DNS response from the ISP DNS server to the client making the request. He can then rewrite the contents of the response from the DNS server to the client with an arbitrary value.
+
+---
 
 ### 4. Defensive Tools & Lockdown
 
@@ -545,6 +587,8 @@ Stream ciphers are preferred over block ciphers where lower latency encrypted co
 
 PKI is an arrangement which provides for third-party vetting of and vouching for user identities. Public keys are typically contained in certificates. PKI arrangements enable users to be authenticated to each other, and to use information in identity certificates to encrypt and decrypt messages travelling to and fro. PKIs usually consist of client software, server software and hardware and operational procedures. A user may digitally sign messages using his private key and another user can check the signature using the public key contained in that user's digital certificate. An example of such software is [GNUPrivacyGuard (GPG)](http://www.gnupg.org)
 
+---
+
 ### 5. The 5E Attacker Methodology
 
 #### Preparation
@@ -610,33 +654,143 @@ The procedure usually is to:
 
 #### Exploitation
 
-Once a target has been enumerated, the attacker moves on to attempt to gain control over the target via any weaknesses found during enumeration
+Once a target has been enumerated, the attacker moves on to attempt to gain control over the target via any weaknesses found during enumeration. Exploitation can be performed using any of the following (in increasing order of difficulty): ready-made tools from repositories, exploit-code compilation, techniques & methods, self-crafted tools.
 
 ##### Spoofing & Man-in-the-Middle Attacks
 
+Spoofing is the act of assuming somebody or something's identity, in order to hide true identity, especially when sending malicious traffic, confuse incident handlers and investigators or insertion between an established connection or data flow.
+
+An exmple of such exploit is ARP poisoning. An overview of how ARP poisoning works is as follows:
+
+- Target requests for remote SSL connection to server and gets attacker's IP
+- Target establishes SSL connection with attacker
+- Attacker establishes SSL connection with actual server and forwards traffic between both
+- Target now sends data to server which attacker can now see
+
 ##### Denial of Service
+
+Denial of Service is an attempt to disrupt the availibility component of the CIA triad. Most common usage is by sending specially crafted packets to vulnerable applications or to send large amounts of traffic that consume CPU cycles, network bandwidth, memory and storage. DoS has evolved to a volumetric-traffic-based attack called distributed DoS (DDos)
+
+DDoS are leunched from legions of comprimised and controlled hosts that can be marshelled into a concerted strike against a single target or group of targets. For instance, a 16KB ICMP request packet sent to from 10000 hosts amount to 1.2GB of packets. These hosts are taeked with various methods to bring down the target's services mainly through exhaustion of target's network bandwitdh, as opposed to hardware resources.
+
+A bot or zombie client is a program capable of performing functions issued from a controller. A botnet is a collection of infected hosts. They are usually installed on unsuspecting users' systems through exploits of OS vulnerability, trojans or payloads of worms. On activation, bots typically join channels on IRC servers and listen for commands from controllers. An example of such is PhatBot.
 
 ##### Exploit Fundementals
 
+- Buffer/Heap Overflows: Most commonly seen exploit type, considered most easily exploitable condition, caused by lack of programmic checks in handling of user-supplied variables which lead to execution of arbitrary code. Exploit is based off how data can be overflowed outside of its assigned space into the memory space of other data, changing the way how the prorgam runs.
+- Shell Code: Small piece of assembly language used to launch programs, can be found on [Shell Storm](http://www.shell-storm.org/shellcode), [Packet Storm](https://packetstormsecurity.com/files/tags/shellcode/). There are two types of shell, BIND shells which listen on previously closed ports allowing attackers to connect to the shell, REVERSE shells used when firewalls block all access to closed ports, this way, it initiates a connection outbount.
+- Format String Vulnerability: Incorrectly used format specifiers in C functions, allowing attackers to overwrite or insert data into memory locations to allow them to run arbitrary code.
+- Metasploit Framework: Provides useful informtaion performing penetration testing, IDS signature development and exploit research
+
 ##### Web Applications
+
+- Web-recon tools: Netcat, Stunnel, HTTPrint
+- Web-fuzzing tools: Spike Proxy, Webscarab, Crowbar, JBroFuzz
+- Web-interception tools: Achilles, Paros, Burp Proxy, SSLstrip
+- Web-session Management: CookieDigger
+
+Web Servers vs Web Applications:
+
+- Web Server: A network service that serves up content residing on web server or behind it (eg Apache, IIS).
+- Web Application: Customized content, modules or functionality that is served up by web servers and requires a web server to run (eg Internet login portals, Search forms).
+
+Weaknesses in webserver do not equate to weaknesses in web applications, web apps often require manual effort testing because they are customized as opposed to web servers which are tested using standardized tools. It is also important to look at web applications as they are constantly being targeted by attackers since network layer protection cannot be used to stop or detect application layer attacks.
+
+Netcat: a web-server reconnisance tool which can be used to send crafted HTTP requests
+
+##### OWASP Top 10
+
+It is a list compiled by Open souece Web Application Security Project which outlines the 10 most common and major web application flaws.
+
+1. Unvalidated input
+2. Broken access controls
+3. Broken authenticaiton and session management
+4. Cross site scripting flaws
+5. Buffer overflows
+6. Injection flaws
+7. Improper error handling
+8. Insecure Storage
+9. Application DoS
+10. Insecure configuration management
 
 ##### Password Cracking
 
+- Windows Passwords: SAM Database
+
+    SAM database is part of Windows which stores 2 cryptographic hashes of all user passwords for user accounts located on it: LAN Manager (case insensitive, LM hash with DES, maximum of 14 characters) or Windows NTLM (case sensitive, uses MD4)
+
+- Rainbow Tables: A database of all possible plaintext-ciphertext pairs, meaning that each hash does not need to be recalculated, since pre-computation is already done, ciphertext can be cracked in shorter time.
+
+An example of a password-cracking program is OPHCrack.
+
 #### Embedding
 
+Embedding is the action undertaken by attackers to retain access in case of a future need. The access established is usually not using the same as the exploit used in gaining initial access
+
 1. Backdoors
+
+    A means for accessing a computer system or application that its maintainers or users are usually not aware of, regular protocols used to evade detection inclue ICMP, P2P, HTTP. Commands are tunnelled inside the protocol payload field. An example is ID Software's backdoor on Quake2 allowing unlogged remote RCON access to any Quake2 server.
+
 2. Trojans
+
+    A tool which grants administrator-level control to an attacker, most require end-user interaction in order to be planted. Examples include Assassin, LANfiltrator.
+
 3. Rootkits
 
+    A program which buries itself into a host's OS and hides its presence by feeding false information to programs attempting to access selected processes. other parts of the OS or other programs.
+
+    - Traditional Rootkits: Replace critical OS executables to let attacker have back-door access and hide on the systems, often requires attackers to already have root access, allows attackers to maintain root level access by implementing backdoor and hiding evidence of system compromise.
+    - Kernel Rootkit: Kernel controls applications and system executables which make calls to it called syscalls, kernel rootkits modify these syscalls and can hide files, directories, processes, network connections without modifying any system binaries. They work by attempting to intercept syscalls, perform a modified action and deliver back the results to the application or system executable which called it.
+
 ##### Defence Against Embedding Tools
+
+- Checksums: Take a baseline checksum for later comparison since traditional rootkits replace system executables
+- System.map: Kernel rootkits modify table holding syscall addresses to replace kernel syscalls with their own code to point to the module's replacement function. This is called teh system.map and comparison of this map against actual addresses of all syscalls can reveal differences.
+- kern_check.c: Compares system.map against kernel syscall table.
+- CheckIDT
+- check-ps: Detect hidden processes
+- Kstat
+- samhain
 
 #### Egress
 
 Egress is defined as the act of an attacker removing evidence that may indicate his or her actions.
 
 1. File Hiding
+
+    - Linux
+        - Prefix with a `.` to hide files or directories
+        - Can be shown using `ls -a`
+    - Windows - File Attribites
+        - Set attributes of files to hidden to avoid casual detection
+        - In NTFS filesystems, specific permissions can be set to avoid files being deleted
+    - Windows - Alternate Data Stream (ADS): used to stream hidden files behind visible files
+    - Windows - Advanced & Persistent ADS
+        - Can be performed by 2-stage process using \\?\ and protected device names
+        - Create or access persistent files using immutable protected device name strings: `type 'path&filename'\CON:'filename'`
+
 2. Log Modification/Removal
+
+    - Linux
+        - Uses `syslog` service to keep record of events that occur in OS, configuration file is found at `/etc/syslog.conf`
+        - Most of logs are stored in `/var/log`
+        - Current login: `/var/run/utmp`
+        - Past logins: `/var/log/wtmp`
+        - Previous methods of logging in log: `/var/log/lastlog`
+    - Windows
+        - Default log path is: `%SystemRoot%\System32\Config`
+        - Event Viewer is program to view log entries
+        - To delete logs, EventLog service has to be stopped, which violates Windows NT security mode, trigerring an automatic reboot in 60 seconds. Attacker will need to navigate to directory and remove or replace with altered copies within 60 seconds. This can be negated with a rootkit.
+
 3. Executable Removal
+
+    Binaries that cannot be hidden would have to be removed securely, through tools such as Eraser
+
+#### Reporting
+
+Reporting of a penetration test or audit should be done in a face-to-face manner to ensure right perception of results, avoid sending large teams, ensure reports are delivered to client in person.
+
+---
 
 ### 6. Wireless Insecurity
 
@@ -685,8 +839,261 @@ Security/encryption implementations for WLAN include:
 - SSID defaulted/revealing
 - Not minimizing RF emanations
 
+---
+
 ### 7. Incident Response & Computer Forensics
+
+#### Incident Response Framework
+
+Reasons for Incident Response capabilities:
+
+- Ability to respond to incidents in a consistent, systematic manner
+- Minimize impact to businesses due to damage, theft or denial of service
+- Better prepare for handling future incidents and to provide feedback for enhancing current security practices
+- Proper handling of legal issues that might stem from an incident
+
+NOTE: **Refer to Threat-Liability Disruption Potential Matrix in coursebook for tool to identify risks of scanarios**
+
+Incident Policies dictate management's commitment to scope and definition of security incidents and spells out response structure, prioritization, performance measures as well as reporting of such incidents within organization.
+
+IR teams are usually structured into the following models:
+
+- Team Model: Centralized incident response team for single campus deployments, distributed incident response team for multi-location deployments
+- Staffing Model: In-house, fully-outsourced or partially-outsourced teams dependent on different factors
+
+Factors to consider for In-house or outsourced IR teams: Need for 24/7 availibility, cost of hiring, development, maintainence, time commitment
+
+##### Incident Response Phases
+
+Phase 1: Preparation
+
+- Policies & Procedures
+    - Develop incident scenarios, DRP and BCP plans
+    - Establish chain of command and hot-button list
+    - Determine escalation thresholds and procedures
+    - Determine PR and legal involvement
+- Communications & Facilities
+    - Encryption software
+    - Incident reporting mechanism
+    - Secure storage facility
+    - Pagers, mobile phones
+    - War room
+    - Offsite recovery centers
+- IR Kit (Hardware & Software)
+- Technical & Documentary Resources
+
+Phase 2: Detection & Analysis
+
+- Likely precursor (sign that incident may occur in future) or indication (sign that incident may be occuring or has occured) sources
+    - NIDS/HIDS
+    - Antivirus softwaer
+    - File integrity checks
+    - Third party monitoring services
+    - Logs from OS, service or applications
+    - Network device logs
+    - Honeypot logs
+    - Information on new vulnerabilities, exploits or incidents at other sites
+    - People from within or outside of organization
+- Effective Analysis
+    - Profile network & systems before incidents occur
+    - Understand normal behaviors
+    - Use centralized logging and log retention policies together with NTP to keep system times synchronized
+    - Perform event correlation between different defences
+    - Share knowledge through knowledge portals
+    - Research
+    - Run packet sniffers to collect additional information
+    - Create diagnosis matrix for less experienced staff
+- Incident Documentation
+    - Record all facts
+    - Documents and recordings need to be timestamped, dated and signed
+    - 2-man teams, one documents, other performs technical tasks
+    - Maintain status of incident
+- Incident Prioritization
+    - Business impact of incident
+    - Criticality of resource involved in incident
+- Incident Notification
+    - Execute & follow notification and escalation prodecures
+    - Periodic updates
+    - If incident affects external parties, ensure PR and legal departments are updated
+
+Phase 3: Containment, Eradication & Recovery
+
+- Containment: Execute damage control actions
+- Eradication: Eliminate undesirables from target
+- Recovery: Rebuild from scratch, retrieve from backup, reset accounts, tighten netwotk perimeter
+
+Phase 4: Post-Incident Activity
+
+- Share experiences
+- Deficiencies in current environment
+- What should be done differently in the future
+- What preventative or corrective actions required to deter future incidents
+- Request for additional budget or resources
+
+#### Computer Forensics
+
+Computer forensics refers to the processes by which computer or digital evidence is identified, preserved, analyzed, interpreted and presented
+
+The roles of a computer forensics investigator include:
+
+- Protect seized evidence, verified replication
+- Recover deleted files
+- Discover files contained in seized materials
+- Discover swap, temp, file slack metadata and artifacts
+- Explore all unallocated space
+- Conduct searches for key terms, special data
+- Note any observed versus expected files, folders, binaries, www data, emails and file conditions
+- Prepare written report
+- Provide expert consultation and testimony
+
+Chain of Custody: Refers to the handling of evidence in a manner by which the evidence is always known and can be proven to be at a given place, in given hands at a given time. A complete chain of custody record needs to be kept for each piece of evidence obtained, from time evidence is collection to time case is tried in court.
+
+##### Non-Volatile Data Acquisition
+
+Non-volatile data is data which will not be lost when power is lost, frequently refers to data stored in locations such as hard-disk drives, PDAs, removable storage devices. Actions to be taken to retrieve data from non-volatile sources include: physical bit-by-bit copy, use of write-blockers to prevent changes, sanitization of target storage device for evidence.
+
+- **Physical vs Logical Copy**: Physical copies are bit-by-bit copies of an entire medium while logical copies are a copy of files within a filesystem. Physical copies contain more data than logical copies which include deleted files, unallocated space, file slack. Physical copies are preferred over logical copies as only physical copies may be accepted in court.
+- **File Slack & Unallocated Spcae**: Files that are deleted or erased in MS-DOS or Windows based OS are not actually erased and may still be present in unallocated spaces and file slacks.
+- **Hashing**: Proves that forensics duplicate is a one-to-one exact match and integrity of duplication
+- `dd` can be used to perform duplication of storage devices, `dcfldd` can be used to generate hashes of acquired data
+
+##### Volatile Data Acquisition
+
+Volatile data is data which will be lost when power is lost, frequently referring to data stored in RAM, swapfiles or cache, usually involved when traditional methods cannot be applied. Examples of such data include date-time stamps, current network connections, open networks ports, running services and processes.
+
+- [Windows Forensic Toolchest](http://www.foolmoon.net/security/sft): Provides automated incident response on Windows system.
+- Forensic Server Project: Client application created to collect volatile Windows information, server controlled by investigator and placed on network.
+
+##### Disk & File Analysis Tools
+
+- File types can be determined by looking at file headers using hexadecimal viewers or editors against [lists](http://www.digitalintelligence.com/software/disoftware/drivespy/filetype.ini) of filetypes and their respective headers
+- Sleuth Kit & Autopsy: Collection of unix-based CLI files and volume-system forensic analysis tools
+- Filedisk: Allows for mounting of dd-created images
+- Disk Investigator: Helps to uncover hidden file in storage
+
+#### Information Gathering
+
+1. Web Browsing Information
+
+    - Internet Explorer stores browsing traces which do not get deleted by clearing internet caches in data files, tools such as Pasco can be used to recover entries.
+    - Cookies can also give an idea to what sites the user has visited, using tools such as Galleta to crawl through cookies to determine creation time to identify when the user visited the site.
+
+2. Email Header Analysis
+
+    Email headers often provide useful information regarding sender, from where and at what time they sent the information. Spammers will attempt to hide or obfuscate headers by placing false headers or using UTF-8 to encode subject or body text to overcome spam-filtering rules. When dealing with spam mail, often the only reliable MX header is the last one which directly exchanges with your own mail relay.
+
+3. Malicious Code & Infection Analysis: Locate & Identify
+
+    You may encounter malware that are 0-day which antivirus software cannot contain as their virus definition do not contain the malware signature. In such cases, the malware have to be manually removed.
+
+    Step 1: Identify strange connections with `netstat -an` and take note of suspicious files or directories.
+
+    Step 2: Check superfetch or prefetch data files in `%SYSTEMROOT%\Prefetch` to get an idea of what applications are being executed.
+
+    Step 3: Check for places where files are hidden in `%SYSTEMROOT%` or `%SYSTEMDIRECTORY` using `dir /o:d /t:c` to check file creation time, `dir /o:d /t:a` to check when files were last accessed and `dir /o:d /t:w` to check when files were last written to.
+
+    Step 4: Check for places where malware start from, two most common locations in registry are `HKLM\Software\Microsoft\Windows\CurrentVersion\Run` and `HKLM\Software\Microsoft\Windows\CurrentVersion\Runonce`, a more comprehensive list can be found [here](http://securitystartshere.org/downloads/ossa/forensics/silentrunners.htm).
+
+    Step 5: Use signature checking to verify authenticity of code, compare hashes to ensure that publisher's software executable is not comprimised or infected with malware.
+
+    Step 6: Use hex editor or strings command to see what text, boasts or ego-trips attackers have hidden in their executables.
+
+    Step 7: Check online for similar observations to find possible countermeasures.
+
+    Step 8: Check what resources (files, network connections) are being accessed by any processes through autoruns, process monitor, process explorer, what registry entries are being accessed.
+
+    Step 9: Understand how malware work by decompiling binaries using tools such as OllyDbg, IDA Pro, WinDbg or Decompiler after damage has been contained.
+
+---
 
 ### 8. The Impact of Law
 
+#### The Need To Know
+
+- Individual: Know that your actions are not violating a law
+- Corporate: Understand liability of companies
+- Permissable Actions: Retaliative actions are not exempt from law, follow proper legal procedures to prosecute attackers
+- Harmonization: Keep in touch with evolution of cybercrime law throughout the world
+
+#### State of Cybercrime Law
+
+Full list of individual country's reports [here](https://www.privacyinternational.org/reports/research-reports)
+
+#### Issues With Enforcement
+
+Key issues when it comes to prosecuting cyber-criminals include:
+
+- Insufficient Evidence: Lack of or insufficient logging
+- Corrupt or Non-probative Evidence: Data destroyed through improper methods or gathering and collection, improper handling or chain-of-custody
+- Best Evidence Rule: Original piece of evidence is superior to a copy
+- Circumstancial or Indirect Evidence: Evidence that implies something but does not directly prove it
+- Jurisdictional Boundaries: Location of attacker, victim and crime committed
+- Extradiction Treaties
+- Prosecution Cost vs Asset Value
+
+Points of consideration for security practitioners
+
+- Collection Method: Gather and collect evidence in non-destructive manner
+- Tag & Bag: Ensure everything collected is accounted for, sealed and labelled
+- Involve legal entities once incident is determined to have impact on business' main activity
+
+#### When to Enforce
+
+Refer to Computer Misuse and Cybersecurity Act of Singaprore (Cap 50A) for relevant legislature within Singapore
+
+---
+
 ## Useful Commands
+
+##### Snort (NIDS)
+
+- Start Snort: `snort -c /etc/snort/snort.conf &`
+- View Snort alerts: `tail -f /var/log/snort/alert`
+
+##### Tripwire (HIDS)
+
+- Take snapshot: `tripwire --init`
+- Check system: `tripwire --check`
+- View report: `twprint -m r --twrfile /var/lib/tripwire/report/<filename>-<timestamp>.twr`
+
+##### GPG
+
+- Generate keypair: `gpg --gen-key`
+- Import public keys: `gpg --import <filename>`
+- View imported keys: `gpg --fingerprint`
+- Verify signature of file: `gpg --verify <signature> <filename>`
+
+##### Dig
+
+- Find IP address of server: `dig securitystartshere.org`
+- Find MX records: `dig securitystartshere.org mx`
+- Find NS records: `dig securitystartshere.org ns`
+- Find SOA records: `dig securitystartshere.org soa`
+- Query DNS server: `dig @ns4191.dns.dyn.com securitystartshere.org`
+- Zone transfer: `dig @ns4191.dns.dyn.com securitystartshere axfr`
+
+##### Nmap
+
+- Ping Sweep: `nmap -sP -n 10.50.1.0/24`
+- SYN Stealth Scan: `nmap -sS <IP Address>`
+- Recommended SYN Scan Flags: `nmap -sS -n -Pn -vv -p<target port range> -g<source port range> <target IP address> --max-retries=<value> --min-parallelism=<value> --max-rtt-timeout=<value> ms`
+- ACK Scan: `nmap -sA <IP Address>`
+- Version Detection: `nmap -sV -Pn -n -p<port numbers> -vv <IP Address>`
+
+##### Nmap Results
+
+- Open: Port is open and accepting requests
+- Closed: Port is accessible but no services are listening on it (RST packet received)
+- Filtered: Port cannot be determined open as packets are not reaching host. This usually denotes a firewall on the port which drops packets.
+
+##### ADS
+
+- Hide files: `type c:\6\nc.exe > c:\6\hobbit.txt:hidenc.exe`
+- Stream text files: `notepad c:\<full path>\<desired filename>:hidden.txt`
+- Run streamed files (Windows XP & earlier): `start c:\<full path>\<desired filename>:hidenc.exe`
+- Run streamed files (Windows Vista & later): `wmic process call create c:\<full path>\<desired filename>:hidenc.exe`
+
+##### Forensics
+
+- Mount images: `filedisk /mount 0 c:\9b\usb.dd /ro G:`
+- Extract file from images: `foremost -T -i usb.dd`
